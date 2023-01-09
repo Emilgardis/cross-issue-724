@@ -8,4 +8,8 @@ fn main() {
             .stdout
             .escape_ascii()
     );
+
+   let bt =  backtrace::Backtrace::new();
+
+   println!("{:?}", bt);
 }
