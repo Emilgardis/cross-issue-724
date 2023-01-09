@@ -17,5 +17,5 @@ jobs:
       - uses: taiki-e/install-action@cross
       - uses: dtolnay/rust-toolchain@nightly
       - run: ldd --version
-      - run: cargo build${{ matrix.cargoflags }}
-      - run: cross build${{ matrix.cargoflags }}
+      - run: cargo run${{ matrix.cargoflags }}
+      - run: cross run${{ matrix.cargoflags }}
