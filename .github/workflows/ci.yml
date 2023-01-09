@@ -19,3 +19,12 @@ jobs:
       - run: ldd --version
       - run: cargo run${{ matrix.cargoflags }}
       - run: cross run${{ matrix.cargoflags }}
+  stable:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: taiki-e/install-action@cross
+      - uses: dtolnay/rust-toolchain@stable
+      - run: ldd --version
+      - run: cargo run
+      - run: cross run
