@@ -18,6 +18,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@nightly
       - run: ldd --version
       - run: cargo run${{ matrix.cargoflags }} --target x86_64-unknown-linux-gnu
+      - run: cross build${{ matrix.cargoflags }} --target x86_64-unknown-linux-gnu
       - run: cross run${{ matrix.cargoflags }} --target x86_64-unknown-linux-gnu
   run-dep-info-buildstd:
     runs-on: ubuntu-latest
@@ -43,6 +44,6 @@ jobs:
       - uses: taiki-e/install-action@cross
       - uses: dtolnay/rust-toolchain@stable
       - run: ldd --version
-      - run: cargo run
-      - run: cross run
+      - run: cargo run --target x86_64-unknown-linux-gnu
+      - run: cross run --target x86_64-unknown-linux-gnu
 
