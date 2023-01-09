@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-dep-info:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        cargoflags:
+          - ""
+          - " -Zunstable-options -Zbinary-dep-depinfo"
+    steps:
+      - uses: actions/checkout@v3
+      - uses: taiki-e/install-action@cross
+      - uses: dtolnay/rust-toolchain@nightly
+      - run: ldd --version
+      - run: cargo build${{ matrix.cargoflags }}
+      - run: cross build${{ matrix.cargoflags }}
