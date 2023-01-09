@@ -1,4 +1,11 @@
 fn main() {
-
-    println!("libc: {}", std::process::Command::new("ldd").arg("--version").output().unwrap().stdout.escape_ascii());
+    println!(
+        "libc: {}",
+        std::process::Command::new("ldd")
+            .arg("--version")
+            .output()
+            .unwrap_or_else(|_| std::process::exit(1))
+            .stdout
+            .escape_ascii()
+    );
 }
