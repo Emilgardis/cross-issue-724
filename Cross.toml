@@ -1,0 +1,2 @@
+[build.env]
+volumes = ["_L=./.github"]
