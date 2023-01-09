@@ -19,6 +19,21 @@ jobs:
       - run: ldd --version
       - run: cargo run${{ matrix.cargoflags }}
       - run: cross run${{ matrix.cargoflags }}
+  run-dep-info-buildstd:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        cargoflags:
+          - "-Zunstable-options -Zbuild-std=std,panic_abort -Zbuild-std-features=panic_immediate_abort "
+          - " -Zunstable-options -Zbinary-dep-depinfo -Zbuild-std=std,panic_abort -Zbuild-std-features=panic_immediate_abort "
+    steps:
+      - uses: actions/checkout@v3
+      - uses: taiki-e/install-action@cross
+      - uses: dtolnay/rust-toolchain@nightly
+      - run: ldd --version
+      - run: cargo run${{ matrix.cargoflags }}
+      - run: cross run${{ matrix.cargoflags }}
   stable:
     runs-on: ubuntu-latest
     steps:
@@ -28,3 +43,4 @@ jobs:
       - run: ldd --version
       - run: cargo run
       - run: cross run
+
