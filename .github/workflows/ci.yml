@@ -25,7 +25,7 @@ jobs:
       fail-fast: false
       matrix:
         cargoflags:
-          - "-Zunstable-options -Zbuild-std=std,panic_abort -Zbuild-std-features=panic_immediate_abort "
+          - " -Zunstable-options -Zbuild-std=std,panic_abort -Zbuild-std-features=panic_immediate_abort "
           - " -Zunstable-options -Zbinary-dep-depinfo -Zbuild-std=std,panic_abort -Zbuild-std-features=panic_immediate_abort "
     steps:
       - uses: actions/checkout@v3
